@@ -49,11 +49,11 @@ class ReportController extends Controller
         'description' => 'required|string',
     ]);
 
-    $data = $request->all();
-    $data['status_id'] = 1;        // ← добавляем статус вручную
-    $data['user_id']   = auth()->id() ?? 1;
-
-    Report::create($data);
+    Report::create([
+        'number'      => $request->number,
+        'description' => $request->description,
+        'status_id'   => 1,               
+    ]);
 
     return redirect()->route('reports.index')
                      ->with('success', 'Заявление успешно создано!');

@@ -9,12 +9,15 @@ class ReportFactory extends Factory
 {
     protected $model = \App\Models\Report::class;
 
-    public function definition(): array
+    public function definition()
     {
+        $faker = \Faker\Factory::create();
+        
         return [
-            'number' => $this->faker->sentence(),  // Случайный заголовок
-            'description' => $this->faker->paragraph(),  // Случайный текст
-            'status_id' => \App\Models\Status::inRandomOrder()->first()->id,
+            'number' => $faker->numerify('aaa-###'),
+            'description' => $faker->paragraph,
+            'created_at' => $faker->dateTimeBetween('-1 week', 'now'),
+            'status_id' => 1
         ];
     }
 }
