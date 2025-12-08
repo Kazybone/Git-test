@@ -62,7 +62,7 @@ class ReportController extends Controller
     // Показать форму редактирования заявления
     public function show(Report $report)
     {
-        return view('reports.show', compact('reports'));
+        return view('reports.show', compact('report'));
     }
 
     // Обновить заявление
